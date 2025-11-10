@@ -5,7 +5,7 @@
 backend/.venv/
 venv/
 .env
-.env.*
+
 
 # Cache e compilados
 __pycache__/
