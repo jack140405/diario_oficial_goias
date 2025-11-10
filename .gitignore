@@ -1,0 +1,77 @@
+# ==============================
+# 🐍 BACKEND (Python + Flask)
+# ==============================
+# Ambientes virtuais
+backend/.venv/
+venv/
+.env
+.env.*
+
+# Cache e compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.pid
+*.gz
+*.egg-info/
+*.spec
+
+# Arquivos temporários e PDFs gerados
+backend/temp/
+backend/*.pdf
+backend/*.zip
+
+# Testes e debug
+.coverage
+htmlcov/
+.pytest_cache/
+instance/
+
+# ==============================
+# ⚛️ FRONTEND (React + Vite)
+# ==============================
+# Dependências e builds
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+frontend/.eslintcache
+frontend/.env
+frontend/.env.*
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ==============================
+# 🚀 GERAL DO PROJETO
+# ==============================
+# Logs gerais
+*.log
+
+# Backups e arquivos temporários
+*.bak
+*.tmp
+*.temp
+*.old
+
+# Arquivos de deploy locais
+deploy/
