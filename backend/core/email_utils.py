@@ -60,9 +60,9 @@ def enviar_arquivos_por_smtp(destinatario: str, assunto: str, corpo: str, anexos
             smtp.login(SMTP_USER, SMTP_PASSWORD)
             smtp.send_message(msg)
 
-        logger.info("📨 Mensagem enviada para o servidor SMTP (entregue).")
+        logger.info(" Mensagem enviada para o servidor SMTP (entregue).")
         return True
 
     except Exception as e:
-        logger.exception("❌ Erro ao enviar e-mail via SMTP: %s", e)
+        logger.exception(" Erro ao enviar e-mail via SMTP: %s", e)
         return False
