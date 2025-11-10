@@ -1,9 +1,24 @@
-Flask
-Flask-Cors
-python-dotenv
-requests
-PyMuPDF
-selenium
-webdriver-manager
 unidecode
-sendgrid
+# --- Dependências principais do Flask ---
+Flask==3.0.3
+Flask-Cors==4.0.1
+Werkzeug==3.0.4
+
+# --- Manipulação de PDFs ---
+PyMuPDF==1.24.9
+
+# --- Navegação automática (web scraping) ---
+selenium==4.24.0
+webdriver-manager==4.0.2
+
+# --- Requisições HTTP ---
+requests==2.32.3
+
+# --- Envio de e-mails via SMTP ---
+email-validator==2.2.0
+
+# --- Variáveis de ambiente (.env) ---
+python-dotenv==1.0.1
+
+# --- Utilidades gerais ---
+certifi==2024.8.30
