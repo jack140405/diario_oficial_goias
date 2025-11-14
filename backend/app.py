@@ -13,7 +13,7 @@ os.makedirs(TEMP_DIR, exist_ok=True)
 
 @app.route('/', methods=['GET'])
 def home():
-    return "API Diário Oficial (SendGrid) - OK"
+    return "API Diário Oficial - OK"
 
 @app.route('/buscar', methods=['POST'])
 def buscar():

@@ -8,10 +8,13 @@ export default function FormBusca() {
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const [resultados, setResultados] = useState([]); // <-- novo estado
+
   const submit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setStatus('Processando...');
+    setResultados([]); // limpar tabela antes
 
     try {
       const res = await axios.post(
@@ -20,7 +23,8 @@ export default function FormBusca() {
         { timeout: 120000 }
       );
 
-      setStatus('Concluído: ' + JSON.stringify(res.data));
+      setStatus('Concluído');
+      setResultados(res.data.resultados || []); // <-- salvar dados
     } catch (err) {
       setStatus('Erro: ' + (err.response?.data?.erro || err.message));
     } finally {
@@ -29,34 +33,56 @@ export default function FormBusca() {
   };
 
   return (
-    <form onSubmit={submit} className="form">
-      <input
-        placeholder="Palavra-chave"
-        value={palavra}
-        onChange={(e) => setPalavra(e.target.value)}
-        required
-      />
+    <>
+      <form onSubmit={submit} className="form">
+        <input
+          placeholder="Palavra-chave"
+          value={palavra}
+          onChange={(e) => setPalavra(e.target.value)}
+          required
+        />
 
-      <input
-        type="number"
-        min="1"
-        value={quantidade}
-        onChange={(e) => setQuantidade(e.target.value)}
-      />
+        <input
+          type="number"
+          min="1"
+          value={quantidade}
+          onChange={(e) => setQuantidade(e.target.value)}
+        />
 
-      <input
-        type="email"
-        placeholder="E-mail"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
+        <input
+          type="email"
+          placeholder="E-mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-      <button type="submit" disabled={loading}>
-        {loading ? 'Processando...' : 'Buscar e Enviar'}
-      </button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Processando...' : 'Buscar e Enviar'}
+        </button>
 
-      <div className="status">{status}</div>
-    </form>
+        <div className="status">{status}</div>
+      </form>
+
+      {/* -------- TABELA RESULTADOS -------- */}
+      {resultados.length > 0 && (
+        <table border="1" style={{ marginTop: '20px' }}>
+          <thead>
+            <tr>
+              <th>Arquivo</th>
+              <th>Páginas</th>
+            </tr>
+          </thead>
+          <tbody>
+            {resultados.map((item, index) => (
+              <tr key={index}>
+                <td>{item.arquivo}</td>
+                <td>{item.paginas.join(', ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </>
   );
 }
